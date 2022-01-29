@@ -1,0 +1,7 @@
+.datepicker {
+  max-width: 20rem;
+}
+
+input:hover {
+  cursor: pointer;
+}

@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// import react from "react";
+// import RadarChart from './charts/RadarChart'
+// import PollenStore from "./PollenStore";
+// import DatePick from "./charts/DatePicker";
+import IntroText from "./introtext/IntroText";
+import PollenLineChart from "./charts/PollenLineChart";
+import LineChart from "./charts/LineChart";
+import Navbar from "./navbar/Navbar";
+import Footer from "./footer/Footer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <RadarChart /> */}
+      <Navbar />
+      <IntroText />
+      <LineChart />
+      <PollenLineChart />
+      {/* <PollenStore /> */}
+      {/* <DatePick /> */}
+
+      <Footer />
     </div>
   );
 }

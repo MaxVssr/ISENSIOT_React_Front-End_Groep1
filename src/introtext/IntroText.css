@@ -1,0 +1,12 @@
+.text {
+  margin-top: 20rem;
+}
+
+.text__body > p {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* .text__anchor {
+  color: white;
+} */

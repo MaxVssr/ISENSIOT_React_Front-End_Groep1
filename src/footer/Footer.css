@@ -1,0 +1,21 @@
+.footer {
+  background: #252733;
+  color: white;
+}
+
+.footer__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem 3rem;
+}
+
+.footer__section > p {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.8rem;
+  margin-bottom: 0;
+  padding-top: 1rem;
+}
