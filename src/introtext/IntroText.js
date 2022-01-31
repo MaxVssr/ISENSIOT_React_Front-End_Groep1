@@ -17,10 +17,6 @@ const IntroText = () => {
             Daarnaast hebben wij ook een externe API gebruikt voor data over
             pollen
           </p>
-
-          <p className="text__anchor" id="charts">
-            ...
-          </p>
         </div>
       </div>
     </div>

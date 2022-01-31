@@ -1,0 +1,60 @@
+.modal {
+  padding: 1rem;
+}
+
+.pollen__wrapper,
+.humtemp__wrapper,
+.pms__wrapper,
+.sp__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pms__wrapper,
+.sp__wrapper {
+  padding: 0 5rem;
+}
+
+.pollen__info,
+.humtemp__info,
+.pms__info,
+.sp__info {
+  padding-bottom: 1rem;
+}
+
+.pollen__info > h3,
+.humtemp__info > h3,
+.pms__info > h3,
+.sp__info > h3 {
+  text-align: center;
+}
+
+.pollen__info > p,
+.humtemp__info > p,
+.pms__info > p,
+.sp__info > p {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.pollen__btnSection,
+.humtemp__btnSection,
+.pms__btnSection,
+.sp__btnSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup__button {
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.8rem;
+  background-color: var(--profile-color);
+  border: 0.1rem solid black;
+  border-radius: 5rem;
+  text-decoration: none;
+  color: white;
+}

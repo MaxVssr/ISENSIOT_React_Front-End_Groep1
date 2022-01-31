@@ -1,13 +1,14 @@
 import { Line } from "react-chartjs-2";
 
+import DatePick from "../datepicker/DatePicker";
+import MicrophonePopup from "../popup/MicrophonePopup";
+import { format } from "date-fns";
+import _ from "lodash";
+
 import React, { Component } from "react";
 import axios from "axios";
 
-import DatePick from "../datepicker/DatePicker";
-import Popup from "../popup/PollenPopup";
-import "./PollenLineChart.css";
-import { format } from "date-fns";
-import _ from "lodash";
+import "./LineChart.css";
 
 import {
   Chart as ChartJS,
@@ -30,7 +31,7 @@ ChartJS.register(
   Legend
 );
 
-class PollenLineChart extends Component {
+class MicrophoneLineChart extends Component {
   state = {
     chartData: [],
     date: "",
@@ -38,7 +39,7 @@ class PollenLineChart extends Component {
 
   fetchData = () => {
     const baseURL = "https://isensiot-api.herokuapp.com/api/";
-    const extraURL = "pollen";
+    const extraURL = "microphone";
     axios.get(baseURL + extraURL).then((response) => {
       console.log(response.data);
       this.setState({ chartData: response.data });
@@ -59,73 +60,43 @@ class PollenLineChart extends Component {
   };
 
   render() {
-    let gp;
-    let tp;
-    let wp;
+    let sp;
     let labels;
-    let gp_risk;
     if (this.state.date) {
       const baseFilter = _.filter(this.state.chartData, {
         timestampDate: this.state.date,
       });
 
       labels = baseFilter.map((x) => x.timestampTime);
-      gp = baseFilter.map((x) => x.grass_pollen_count);
-      tp = baseFilter.map((x) => x.tree_pollen_count);
-      wp = baseFilter.map((x) => x.weed_pollen_count);
-      gp_risk = baseFilter.map((x) => x.grass_pollen_risk);
+      sp = baseFilter.map((x) => x.soundPollution);
     } else {
       const base = _.filter(this.state.chartData, {
         timestampDate: format(Date.now(), "yyyy-MM-dd"),
       });
 
       labels = base.map((x) => x.timestampTime);
-      gp = base.map((x) => x.grass_pollen_count);
-      tp = base.map((x) => x.tree_pollen_count);
-      wp = base.map((x) => x.weed_pollen_count);
-      gp_risk = base.map((x) => x.grass_pollen_risk);
+      sp = base.map((x) => x.soundPollution);
     }
 
     return (
-      <div className="charts">
-        <h1>Chart for Pollen</h1>
+      <div id="charts" className="charts">
+        <h1>Chart for Sound Pollution</h1>
         <div className="charts__info">
           <DatePick onSelectDate={this.handleDate} />
-          <Popup />
+          <MicrophonePopup />
         </div>
+
         <Line
           data={{
             labels: labels,
             datasets: [
               {
-                label: "Grass Pollen",
-                data: gp,
+                label: "Sound Pollution",
+                data: sp,
                 backgroundColor: "transparent",
                 borderWidth: 3,
                 fill: false,
                 borderColor: "#F04949",
-                pointRadius: 2,
-                pointHoverRadius: 0,
-                lineTension: 0.05,
-              },
-              {
-                label: "Tree Pollen",
-                data: tp,
-                backgroundColor: "transparent",
-                borderWidth: 3,
-                fill: false,
-                borderColor: "#3ABEFF",
-                pointRadius: 2,
-                pointHoverRadius: 0,
-                lineTension: 0.05,
-              },
-              {
-                label: "Weed Pollen",
-                data: wp,
-                backgroundColor: "transparent",
-                borderWidth: 3,
-                fill: false,
-                borderColor: "#ffdc14",
                 pointRadius: 2,
                 pointHoverRadius: 0,
                 lineTension: 0.05,
@@ -148,4 +119,4 @@ class PollenLineChart extends Component {
   }
 }
 
-export default PollenLineChart;
+export default MicrophoneLineChart;

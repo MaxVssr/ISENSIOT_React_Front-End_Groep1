@@ -1,10 +1,9 @@
 import { Line } from "react-chartjs-2";
 
 import DatePick from "../datepicker/DatePicker";
+import HumTempPopup from "../popup/HumTempPopup";
 import { format } from "date-fns";
 import _ from "lodash";
-
-// import { AgGridColumn, AgGridReact } from "ag-grid-react";
 
 import React, { Component } from "react";
 import axios from "axios";
@@ -32,7 +31,7 @@ ChartJS.register(
   Legend
 );
 
-class LineChart extends Component {
+class HumTempLineChart extends Component {
   state = {
     chartData: [],
     date: "",
@@ -85,7 +84,11 @@ class LineChart extends Component {
     return (
       <div id="charts" className="charts">
         <h1>Chart for Temperature and Humidity</h1>
-        <DatePick onSelectDate={this.handleDate} />
+        <div className="charts__info">
+          <DatePick onSelectDate={this.handleDate} />
+          <HumTempPopup />
+        </div>
+
         <Line
           data={{
             labels: labels,
@@ -130,4 +133,4 @@ class LineChart extends Component {
   }
 }
 
-export default LineChart;
+export default HumTempLineChart;

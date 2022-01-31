@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="navigation u-z-2" id="navbar">
       <a className="home-logo u-z-3" href="/">
-        SSNWK
+        Woonkwaliteit Net
       </a>
       <div className="navigation-icon u-z-3">
         <div className="top"></div>
